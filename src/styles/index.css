@@ -78,7 +78,7 @@ body {
 /* 3D Scene */
 .three-d-scene {
   width: 100%;
-  height: 40rem;
+  height: 45rem;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
@@ -193,7 +193,43 @@ body {
   color: #27ae60;
 }
 
-.scoreboard {
+.scoreboard.glass {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.score-item.neon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.score-label {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.score-value.gradient {
+  font-size: 2.6rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00CDAC, #02AAB0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* .scoreboard {
   display: flex;
   justify-content: space-around;
   margin-bottom: 2rem;
@@ -201,9 +237,9 @@ body {
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
-}
+} */
 
-.score-item {
+/* .score-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -219,7 +255,7 @@ body {
   font-size: 2.4rem;
   font-weight: 700;
   color: #2c3e50;
-}
+} */
 
 .control-panel {
   display: flex;
@@ -456,7 +492,7 @@ body {
   }
   
   .three-d-scene {
-    height: 30rem;
+    height: 28rem;
   }
   
   .but {
@@ -488,7 +524,7 @@ body {
   }
   
   .three-d-scene {
-    height: 25rem;
+    height: 24rem;
   }
   
   .but {

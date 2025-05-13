@@ -270,6 +270,7 @@ function App() {
               board={gameState.board} 
               onCellClick={handleCellClick} 
               winningLine={gameState.winningLine}
+              scores={scores}
             />
           ) : (
             <Board 

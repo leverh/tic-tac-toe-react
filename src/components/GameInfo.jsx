@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaTimes, FaCircle, FaEquals } from 'react-icons/fa';
 
 const GameInfo = ({ 
   currentPlayer, 
@@ -11,7 +12,7 @@ const GameInfo = ({
 }) => {
   let statusText;
   let statusClass;
-  
+
   if (winner === 'X') {
     statusText = 'You won!';
     statusClass = 'player-turn';
@@ -26,6 +27,13 @@ const GameInfo = ({
     statusClass = currentPlayer === 'X' ? 'player-turn' : 'computer-turn';
   }
 
+  const scoreTransition = {
+    initial: { opacity: 0, scale: 0.8, y: -10 },
+    animate: { opacity: 1, scale: 1.2, y: 0 },
+    exit: { opacity: 0, scale: 0.8, y: -10 },
+    transition: { duration: 0.4 }
+  };
+
   return (
     <motion.div 
       className="game-info"
@@ -33,56 +41,41 @@ const GameInfo = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <div className={`status ${statusClass}`}>
-        {statusText}
-      </div>
-      
+      <div className={`status ${statusClass}`}>{statusText}</div>
+
       <motion.div 
-        className="scoreboard"
+        className="scoreboard glass"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        <div className="score-item">
-          <span className="score-label">You (X):</span>
-          <motion.span 
-            className="score-value"
-            key={scores.X}
-            initial={{ scale: 1 }}
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 0.5 }}
+        {[ 
+          { label: 'You (X)', icon: <FaTimes color="#3498db" />, score: scores.X },
+          { label: 'AI (O)', icon: <FaCircle color="#e74c3c" />, score: scores.O },
+          { label: 'Draws', icon: <FaEquals color="#95a5a6" />, score: scores.draws }
+        ].map(({ label, icon, score }) => (
+          <motion.div 
+            className="score-item neon"
+            key={label}
+            whileHover={{ scale: 1.05 }}
           >
-            {scores.X}
-          </motion.span>
-        </div>
-        
-        <div className="score-item">
-          <span className="score-label">AI (O):</span>
-          <motion.span 
-            className="score-value"
-            key={scores.O}
-            initial={{ scale: 1 }}
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 0.5 }}
-          >
-            {scores.O}
-          </motion.span>
-        </div>
-        
-        <div className="score-item">
-          <span className="score-label">Draws:</span>
-          <motion.span 
-            className="score-value"
-            key={scores.draws}
-            initial={{ scale: 1 }}
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 0.5 }}
-          >
-            {scores.draws}
-          </motion.span>
-        </div>
+            <div className="score-label">{icon} {label}</div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={score}
+                className="score-value gradient"
+                initial={scoreTransition.initial}
+                animate={scoreTransition.animate}
+                exit={scoreTransition.exit}
+                transition={scoreTransition.transition}
+              >
+                {score}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+        ))}
       </motion.div>
-      
+
       <motion.div 
         className="control-panel"
         initial={{ opacity: 0, x: 20 }}
@@ -105,7 +98,7 @@ const GameInfo = ({
             ))}
           </div>
         </div>
-        
+
         <div className="view-mode">
           <p className="view-mode-label">Game View:</p>
           <motion.button 
