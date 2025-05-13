@@ -129,7 +129,7 @@ const ThreeDScene = ({ board, onCellClick, winningLine }) => {
     <Canvas
       shadows
       camera={{ position: [0, 0, 7.5], fov: 30 }}
-      style={{ width: '100%', height: '50rem', borderRadius: '1rem' }}
+      className="three-d-scene-canvas"
     >
       <color attach="background" args={["#1a1a1a"]} />
       <ambientLight intensity={0.5} />

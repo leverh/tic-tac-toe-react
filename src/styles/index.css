@@ -84,6 +84,12 @@ body {
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
+.three-d-scene-canvas {
+  width: 100%;
+  height: 50rem !important;
+  border-radius: 1rem;
+}
+
 /* 2D Game Board */
 .game {
   display: grid;
@@ -483,6 +489,10 @@ body {
   .three-d-scene {
     height: 35rem;
   }
+
+  .three-d-scene-canvas {
+    height: 35rem !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -493,6 +503,10 @@ body {
   
   .three-d-scene {
     height: 28rem;
+  }
+
+  .three-d-scene-canvas {
+    height: 28rem !important;
   }
   
   .but {
@@ -525,6 +539,10 @@ body {
   
   .three-d-scene {
     height: 24rem;
+  }
+
+  .three-d-scene-canvas {
+    height: 24rem !important;
   }
   
   .but {
