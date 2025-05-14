@@ -12,6 +12,9 @@ A modern Tic Tac Toe game built with **React** and enhanced with a fully interac
 - Responsive design for all devices
 - Score tracking with local storage
 
+## Live Link
+[Tic Tac Tricked Out](https://ornate-praline-606cfd.netlify.app/)
+
 ## Tech Stack
 
 - React for the UI components
