@@ -1,6 +1,6 @@
-# Tic Tac Tricked Out - React 3D Tic Tac Toe
+# Tic Tac Tricked Out - A Retro React 3D Tic Tac Toe
 
-A modern Tic Tac Toe game built with **React** and enhanced with a fully interactive **3D board** using Three.js. Switch between 2D and 3D experiences with smooth transitions, glass-morphism UI, and animated score tracking.
+A retro Tic Tac Toe game built with **React** and enhanced with a fully interactive **3D board** using Three.js. Switch between 2D and 3D experiences with smooth transitions, glass-morphism UI, and animated score tracking.
 
 ## ✨ Features
 
@@ -11,9 +11,10 @@ A modern Tic Tac Toe game built with **React** and enhanced with a fully interac
 - Animated effects and transitions
 - Responsive design for all devices
 - Score tracking with local storage
+- Dark and light modes
 
 ## Live Link
-[Tic Tac Tricked Out](https://ornate-praline-606cfd.netlify.app/)
+[Tic Tac Tricked Retro Out](https://ornate-praline-606cfd.netlify.app/)
 
 ## Tech Stack
 
