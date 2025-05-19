@@ -1,4 +1,4 @@
-import '../styles/index.css';
+import '../styles/index1.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

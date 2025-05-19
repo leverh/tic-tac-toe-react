@@ -4,28 +4,71 @@ import Board from './components/Board';
 import GameInfo from './components/GameInfo';
 import ThreeDScene from './components/ThreeDScene';
 import ParticleBackground from './components/ParticleBackground';
+import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
-import './styles/index.css';
+import './styles/index1.css';
 
 // Win/Draw Modal Component
-const WinModal = ({ winner, resetGame }) => {
-  let message;
-  let icon;
-  let color;
+const WinModal = ({ winner, resetGame, isDarkTheme }) => {
+  const lightColors = {
+    X: {
+      gradient: 'linear-gradient(135deg, rgba(26, 115, 232, 0.8), rgba(66, 133, 244, 0.6))',
+      glow: 'rgba(26, 115, 232, 0.3)',
+      border: 'rgba(26, 115, 232, 0.4)'
+    },
+    O: {
+      gradient: 'linear-gradient(135deg, rgba(234, 67, 53, 0.75), rgba(234, 67, 53, 0.5))',
+      glow: 'rgba(234, 67, 53, 0.3)',
+      border: 'rgba(234, 67, 53, 0.4)'
+    },
+    draw: {
+      gradient: 'linear-gradient(135deg, rgba(52, 168, 83, 0.75), rgba(52, 168, 83, 0.5))',
+      glow: 'rgba(52, 168, 83, 0.3)',
+      border: 'rgba(52, 168, 83, 0.4)'
+    }
+  };
 
+  const darkColors = {
+    X: {
+      gradient: 'linear-gradient(135deg, rgba(138, 180, 248, 0.6), rgba(138, 180, 248, 0.2))',
+      glow: 'rgba(138, 180, 248, 0.2)',
+      border: 'rgba(138, 180, 248, 0.3)'
+    },
+    O: {
+      gradient: 'linear-gradient(135deg, rgba(242, 139, 130, 0.6), rgba(242, 139, 130, 0.2))',
+      glow: 'rgba(242, 139, 130, 0.2)',
+      border: 'rgba(242, 139, 130, 0.3)'
+    },
+    draw: {
+      gradient: 'linear-gradient(135deg, rgba(124, 205, 124, 0.6), rgba(124, 205, 124, 0.2))',
+      glow: 'rgba(124, 205, 124, 0.2)',
+      border: 'rgba(124, 205, 124, 0.3)'
+    }
+  };
+
+  const colors = isDarkTheme ? darkColors : lightColors;
+
+  let message, icon, style;
   if (winner === 'X') {
     message = 'You Won!';
     icon = '🏆';
-    color = 'rgba(165, 145, 255, 0.95)'; // Player X
+    style = colors.X;
   } else if (winner === 'O') {
     message = 'AI Won!';
     icon = '🤖';
-    color = 'rgba(255, 123, 123, 0.95)'; // Player O
+    style = colors.O;
   } else {
     message = "It's a Draw!";
     icon = '🤝';
-    color = 'rgba(123, 232, 232, 0.95)'; // Draw
+    style = colors.draw;
   }
+
+  const textColor = isDarkTheme ? 'white' : '#1E293B';
+  const overlayColor = isDarkTheme ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.3)';
+  const buttonBg = isDarkTheme ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.7)';
+  const buttonColor = isDarkTheme ? 'white' : '#1E293B';
+  const buttonBorder = isDarkTheme ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+  const buttonHoverBg = isDarkTheme ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.9)';
 
   return (
     <motion.div
@@ -43,52 +86,52 @@ const WinModal = ({ winner, resetGame }) => {
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 100,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: overlayColor,
         backdropFilter: 'blur(5px)',
         WebkitBackdropFilter: 'blur(5px)'
       }}
       onClick={resetGame}
     >
-      <motion.div 
+      <motion.div
         initial={{ y: 20 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 400, damping: 20, delay: 0.1 }}
         style={{
-          background: `linear-gradient(135deg, ${color}, rgba(0, 0, 0, 0.7))`,
+          background: style.gradient,
           borderRadius: '1.5rem',
           padding: '3rem 4rem',
-          boxShadow: '0 1rem 3rem rgba(0, 0, 0, 0.3)',
+          boxShadow: `0 1rem 3rem ${style.glow}`,
           textAlign: 'center',
           maxWidth: '90%',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: `1px solid ${style.border}`,
           position: 'relative',
           overflow: 'hidden'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <div style={{ fontSize: '5rem', marginBottom: '1rem' }}>{icon}</div>
-        <h2 style={{ 
-          fontSize: '3rem', 
-          color: 'white', 
+        <h2 style={{
+          fontSize: '3rem',
+          color: textColor,
           marginBottom: '1.5rem',
           fontWeight: 800,
-          textShadow: '0 0.2rem 0.5rem rgba(0, 0, 0, 0.3)'
+          textShadow: isDarkTheme ? '0 0.2rem 0.5rem rgba(0, 0, 0, 0.3)' : 'none'
         }}>
           {message}
         </h2>
         <motion.button
-          whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
+          whileHover={{ scale: 1.05, backgroundColor: buttonHoverBg }}
           whileTap={{ scale: 0.95 }}
           style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            color: 'white',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
+            backgroundColor: buttonBg,
+            color: buttonColor,
+            border: `1px solid ${buttonBorder}`,
             borderRadius: '2rem',
             padding: '1rem 2.5rem',
             fontSize: '1.6rem',
             fontWeight: 600,
             cursor: 'pointer',
-            boxShadow: '0 0.4rem 1rem rgba(0, 0, 0, 0.2)',
+            boxShadow: '0 0.4rem 1rem rgba(0, 0, 0, 0.1)',
             outline: 'none'
           }}
           onClick={resetGame}
@@ -101,7 +144,7 @@ const WinModal = ({ winner, resetGame }) => {
           left: '-50%',
           width: '200%',
           height: '200%',
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
+          background: `radial-gradient(circle, ${style.glow} 0%, transparent 70%)`,
           zIndex: -1
         }}></div>
       </motion.div>
@@ -343,6 +386,7 @@ function App() {
   return (
     <>
       <ParticleBackground />
+      <ThemeToggle />
       <motion.div
         className="app-container"
         initial={{ opacity: 0 }}

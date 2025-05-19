@@ -1,7 +1,21 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const ParticleBackground = () => {
   const canvasRef = useRef(null);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      setIsDarkTheme(document.body.classList.contains('dark-theme'));
+    };
+    
+    handleThemeChange();
+    
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -12,8 +26,12 @@ const ParticleBackground = () => {
     
     const particlesArray = [];
     const numberOfParticles = 50;
-    const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12'];
     
+    const getDarkThemeColors = () => ['#00DFFC', '#FF61D8', '#41FA7E', '#FFEC59'];
+    const getLightThemeColors = () => ['#1A73E8', '#EA4335', '#34A853', '#FBBC04'];
+    
+    let colors = isDarkTheme ? getDarkThemeColors() : getLightThemeColors();
+
     let mouse = {
       x: null,
       y: null,
@@ -80,6 +98,7 @@ const ParticleBackground = () => {
     
     function init() {
       particlesArray.length = 0;
+      colors = isDarkTheme ? getDarkThemeColors() : getLightThemeColors();
       for (let i = 0; i < numberOfParticles; i++) {
         particlesArray.push(new Particle());
       }
@@ -88,6 +107,9 @@ const ParticleBackground = () => {
     function animate() {
       requestAnimationFrame(animate);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = isDarkTheme ? '#121212' : '#F8F9FA';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
@@ -124,7 +146,7 @@ const ParticleBackground = () => {
       window.removeEventListener('mousemove', null);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDarkTheme]);
   
   return (
     <canvas 
@@ -137,8 +159,7 @@ const ParticleBackground = () => {
         width: '100%',
         height: '100%',
         zIndex: -1,
-        opacity: 0.7,
-        backgroundColor: '#121212' 
+        // opacity: 0.7
       }}
     />
   );

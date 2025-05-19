@@ -1,12 +1,134 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Theme Variables */
 :root {
+  /* Fonts */
   --heading-font: 'Montserrat', sans-serif;
   --body-font: 'Inter', sans-serif;
+  
+  /* Light Theme (Default) */
+  --bg-color: #F8F9FA;
+  --text-color: #1E293B;
+  --heading-color: #0F172A;
+  --muted-text-color: #475569;
+  --link-color: #1A73E8;
+  --link-hover-color: #1558B3;
+  
+  /* UI Elements - Light */
+  --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 250, 0.8));
+  --card-border: rgba(230, 230, 240, 0.5);
+  --card-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  
+  --button-bg: #F1F5F9;
+  --button-color: #475569;
+  --button-border: #CBD5E1;
+  --button-hover-bg: #E2E8F0;
+  --button-hover-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  
+  --button-active-bg: linear-gradient(135deg, #1A73E8, #34A853);
+  --button-active-color: white;
+  --button-active-border: transparent;
+  --button-active-shadow: 0 0.4rem 0.8rem rgba(26, 115, 232, 0.25);
+  
+  --status-bg: rgba(245, 245, 250, 0.8);
+  --status-border: rgba(230, 230, 240, 0.5);
+  
+  --footer-border: rgba(200, 200, 220, 0.2);
+  
+  /* Game Elements - Light */
+  --cell-bg: rgba(245, 245, 250, 0.5);
+  --cell-border: rgba(230, 230, 240, 0.5);
+  --cell-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.05);
+  --cell-hover-bg: rgba(240, 240, 250, 0.7);
+  --cell-hover-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.1);
+  
+  --x-color: #a591ff;
+  --o-color: #ff7b7b;
+  --winning-cell-bg: rgba(46, 204, 113, 0.2);
+  --winning-cell-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+  
+  /* Player Turns - Light */
+  --player-turn-bg: linear-gradient(135deg, rgba(111, 66, 193, 0.15), rgba(111, 66, 193, 0.05));
+  --player-turn-border: rgba(111, 66, 193, 0.4);
+  --computer-turn-bg: linear-gradient(135deg, rgba(255, 123, 123, 0.15), rgba(255, 123, 123, 0.05));
+  --computer-turn-border: rgba(255, 123, 123, 0.4);
+  --draw-bg: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0.05));
+  --draw-border: rgba(46, 204, 113, 0.4);
+  
+  /* Canvas BG for Particles */
+  --canvas-bg: #F8F9FA;
+  
+  /* Gradients */
+  --title-gradient: linear-gradient(90deg, #FF9966, #FF5E62, #4776E6, #00CDAC);
+  --score-gradient: linear-gradient(90deg, #a591ff, #7be8e8);
+  --primary-button-gradient: linear-gradient(135deg, rgba(111, 66, 193, 0.85), rgba(80, 156, 240, 0.85));
+  --primary-button-hover-gradient: linear-gradient(135deg, rgba(131, 86, 213, 0.9), rgba(100, 176, 255, 0.9));
+  --footer-accent-gradient: linear-gradient(90deg, #4FC3F7, #00CDAC);
+  
+  /* Particle Colors */
+  --particle-colors: #1A73E8, #EA4335, #34A853, #FBBC04;
 }
 
-html {
-  font-size: 10px;
+/* Dark Theme */
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: rgba(255, 255, 255, 0.9);
+  --heading-color: white;
+  --muted-text-color: rgba(255, 255, 255, 0.7);
+  --link-color: #00DFFC;
+  --link-hover-color: #41FA7E;
+  
+  /* UI Elements - Dark */
+  --card-bg: linear-gradient(135deg, rgba(30, 30, 40, 0.7), rgba(20, 20, 30, 0.5));
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+  
+  --button-bg: rgba(255, 255, 255, 0.12);
+  --button-color: rgba(255, 255, 255, 0.9);
+  --button-border: rgba(255, 255, 255, 0.05);
+  --button-hover-bg: rgba(255, 255, 255, 0.18);
+  --button-hover-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+  
+  --button-active-bg: linear-gradient(135deg, rgba(111, 66, 193, 0.7), rgba(80, 156, 240, 0.7));
+  --button-active-color: white;
+  --button-active-border: rgba(255, 255, 255, 0.2);
+  --button-active-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+  
+  --status-bg: rgba(255, 255, 255, 0.1);
+  --status-border: rgba(255, 255, 255, 0.05);
+  
+  --footer-border: rgba(255, 255, 255, 0.1);
+  
+  /* Game Elements - Dark */
+  --cell-bg: rgba(255, 255, 255, 0.15);
+  --cell-border: rgba(255, 255, 255, 0.12);
+  --cell-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  --cell-hover-bg: rgba(255, 255, 255, 0.2);
+  --cell-hover-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.15);
+  
+  --x-color: #a591ff;
+  --o-color: #ff7b7b;
+  --winning-cell-bg: rgba(46, 204, 113, 0.2);
+  --winning-cell-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+  
+  /* Player Turns - Dark */
+  --player-turn-bg: linear-gradient(135deg, rgba(111, 66, 193, 0.25), rgba(111, 66, 193, 0.1));
+  --player-turn-border: rgba(111, 66, 193, 0.6);
+  --computer-turn-bg: linear-gradient(135deg, rgba(255, 123, 123, 0.25), rgba(255, 123, 123, 0.1));
+  --computer-turn-border: rgba(255, 123, 123, 0.6);
+  --draw-bg: linear-gradient(135deg, rgba(46, 204, 113, 0.25), rgba(46, 204, 113, 0.1));
+  --draw-border: rgba(46, 204, 113, 0.6);
+  
+  /* Canvas BG for Particles */
+  --canvas-bg: #121212;
+  
+  /* Different Particle Colors for Dark Theme */
+  --particle-colors: #00DFFC, #FF61D8, #41FA7E, #FFEC59;
+  
+  /* Optional Dark Theme Background Gradient */
+  --bg-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  --bg-gradient-size: 400% 400%;
+  --bg-gradient-animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
@@ -15,14 +137,24 @@ html {
   100% { background-position: 0% 50%; }
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  color: rgba(255, 255, 255, 0.9);
+  background: var(--bg-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
   font-family: var(--body-font);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Optional for dark theme - animated gradient background */
+.dark-theme.gradient-bg body {
+  background: var(--bg-gradient);
+  background-size: var(--bg-gradient-size);
+  animation: var(--bg-gradient-animation);
 }
 
 .title, .modal-message {
@@ -53,7 +185,7 @@ button, .status, .score-label, .score-value {
 }
 
 .title {
-  background: linear-gradient(90deg, #FF9966, #FF5E62, #4776E6, #00CDAC);
+  background: var(--title-gradient);
   background-size: 300% 300%;
   animation: textGradient 8s ease infinite;
   -webkit-background-clip: text;
@@ -65,36 +197,26 @@ button, .status, .score-label, .score-value {
 }
 
 .game-container {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
   backdrop-filter: blur(5px);
   border-radius: 1.5rem;
   padding: 2rem;
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+  box-shadow: var(--card-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   max-width: 50rem;
-}
-
-/* .game-container, .board-container {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 1.2rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
-} ALTERNATIVE PLAIN BACKGROUNDS*/
-
-.game-container, .board-container {
-  background: linear-gradient(135deg, 
-                             rgba(255, 255, 255, 0.1), 
-                             rgba(255, 255, 255, 0.05));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 1.2rem;
-  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--card-border);
 }
 
 .board-container {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1.2rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
   width: 95%;
 }
 
@@ -127,8 +249,8 @@ button, .status, .score-label, .score-value {
 }
 
 .but {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--cell-bg);
+  border: 1px solid var(--cell-border);
   border-radius: 1rem;
   font-size: 5rem;
   backdrop-filter: blur(5px);
@@ -137,7 +259,7 @@ button, .status, .score-label, .score-value {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  box-shadow: var(--cell-shadow);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -148,9 +270,9 @@ button, .status, .score-label, .score-value {
 }
 
 .but:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--cell-hover-bg);
   transform: translateY(-0.3rem);
-  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.15);
+  box-shadow: var(--cell-hover-shadow);
 }
 
 .but:active {
@@ -159,21 +281,21 @@ button, .status, .score-label, .score-value {
 }
 
 .blue {
-  color: #a591ff;
+  color: var(--x-color);
   text-shadow: 0 0 0.8rem rgba(165, 145, 255, 0.5);
   font-weight: bold;
 }
 
 .red {
-  color: #ff7b7b;
+  color: var(--o-color);
   text-shadow: 0 0 0.8rem rgba(255, 123, 123, 0.5);
   font-weight: bold;
 }
 
 .winning-cell {
   animation: pulse 1.5s infinite !important;
-  background: rgba(46, 204, 113, 0.2) !important;
-  box-shadow: 0 0 15px rgba(46, 204, 113, 0.5) !important;
+  background: var(--winning-cell-bg) !important;
+  box-shadow: var(--winning-cell-shadow) !important;
 }
 
 @keyframes pulse {
@@ -196,18 +318,6 @@ button, .status, .score-label, .score-value {
   color: #e74c3c !important;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
-  }
-}
-
 /* Game Info */
 .game-info {
   display: flex;
@@ -217,8 +327,8 @@ button, .status, .score-label, .score-value {
 }
 
 .status {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
+  background: var(--status-bg);
+  color: var(--text-color);
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -227,32 +337,32 @@ button, .status, .score-label, .score-value {
   letter-spacing: 0.05rem;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--status-border);
 }
 
 .player-turn {
-  background: linear-gradient(135deg, rgba(111, 66, 193, 0.25), rgba(111, 66, 193, 0.1));
-  border-left: 0.3rem solid rgba(111, 66, 193, 0.6);
+  background: var(--player-turn-bg);
+  border-left: 0.3rem solid var(--player-turn-border);
 }
 
 .computer-turn {
-  background: linear-gradient(135deg, rgba(255, 123, 123, 0.25), rgba(255, 123, 123, 0.1));
-  border-left: 0.3rem solid rgba(255, 123, 123, 0.6);
+  background: var(--computer-turn-bg);
+  border-left: 0.3rem solid var(--computer-turn-border);
 }
 
 .draw {
-  background: linear-gradient(135deg, rgba(46, 204, 113, 0.25), rgba(46, 204, 113, 0.1));
-  border-left: 0.3rem solid rgba(46, 204, 113, 0.6);
+  background: var(--draw-bg);
+  border-left: 0.3rem solid var(--draw-border);
 }
 
 .scoreboard.glass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  background: var(--card-bg);
   border-radius: 1rem;
   padding: 1.5rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
   display: flex;
   justify-content: space-around;
   gap: 2rem;
@@ -263,11 +373,11 @@ button, .status, .score-label, .score-value {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .score-label {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -279,7 +389,7 @@ button, .status, .score-label, .score-value {
 .score-value.gradient {
   font-size: 2.8rem;
   font-weight: bold;
-  background: linear-gradient(90deg, #a591ff, #7be8e8);
+  background: var(--score-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -300,7 +410,7 @@ button, .status, .score-label, .score-value {
 }
 
 .difficulty-label, .view-mode-label {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.05rem;
@@ -314,9 +424,9 @@ button, .status, .score-label, .score-value {
 }
 
 .difficulty-btn, .view-mode-btn {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.9);
-  border: none;
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  border: 1px solid var(--button-border);
   border-radius: 1.2rem;
   padding: 0.8rem 1.6rem;
   font-size: 1.4rem;
@@ -328,20 +438,20 @@ button, .status, .score-label, .score-value {
 }
 
 .difficulty-btn:hover, .view-mode-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background-color: var(--button-hover-bg);
   transform: translateY(-0.2rem);
-  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  box-shadow: var(--button-hover-shadow);
 }
 
 .difficulty-btn.active, .view-mode-btn.active {
-  background: linear-gradient(135deg, rgba(111, 66, 193, 0.7), rgba(80, 156, 240, 0.7));
-  color: white;
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+  background: var(--button-active-bg);
+  color: var(--button-active-color);
+  border-color: var(--button-active-border);
+  box-shadow: var(--button-active-shadow);
 }
 
 #reset {
-  background: linear-gradient(135deg, rgba(111, 66, 193, 0.85), rgba(80, 156, 240, 0.85));
+  background: var(--primary-button-gradient);
   color: white;
   border: none;
   border-radius: 1.2rem;
@@ -361,7 +471,7 @@ button, .status, .score-label, .score-value {
 }
 
 #reset:hover {
-  background: linear-gradient(135deg, rgba(131, 86, 213, 0.9), rgba(100, 176, 255, 0.9));
+  background: var(--primary-button-hover-gradient);
   transform: translateY(-0.3rem);
   box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.25);
 }
@@ -370,13 +480,14 @@ button, .status, .score-label, .score-value {
   transform: translateY(0);
   box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
 }
+
 /* Footer Styles */
 .footer {
   margin-top: 5rem;
   padding-top: 3rem;
   width: 100%;
-  color: rgba(255, 255, 255, 0.7);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  border-top: 1px solid var(--footer-border);
 }
 
 .footer-content {
@@ -397,7 +508,7 @@ button, .status, .score-label, .score-value {
 .footer-title {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: white;
+  color: var(--heading-color);
   position: relative;
   padding-bottom: 1rem;
 }
@@ -409,7 +520,7 @@ button, .status, .score-label, .score-value {
   bottom: 0;
   height: 0.2rem;
   width: 5rem;
-  background: linear-gradient(90deg, #4FC3F7, #00CDAC);
+  background: var(--footer-accent-gradient);
   border-radius: 0.1rem;
 }
 
@@ -446,13 +557,13 @@ button, .status, .score-label, .score-value {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-color);
   font-size: 1.4rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-link:hover {
-  color: white;
+  color: var(--link-hover-color);
   transform: translateY(-0.3rem);
 }
 
@@ -474,7 +585,7 @@ button, .status, .score-label, .score-value {
 }
 
 .footer-bottom a {
-  background: linear-gradient(90deg, #4FC3F7, #00CDAC);
+  background: var(--footer-accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -490,17 +601,65 @@ button, .status, .score-label, .score-value {
 
 .footer-tagline {
   margin-top: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted-text-color);
   font-size: 1.1rem;
 }
 
 /* Rotate Hint */
 .rotate-hint {
   font-size: 1.3rem;
-  color: #333;
+  color: var(--text-color);
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   margin-top: 1rem;
   opacity: 0.7;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  background: var(--button-bg);
+  color: var(--button-color);
+  border: 1px solid var(--button-border);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Hide one of the icons based on theme */
+.theme-toggle .moon-icon {
+  display: block;
+}
+
+.theme-toggle .sun-icon {
+  display: none;
+}
+
+.dark-theme .theme-toggle .moon-icon {
+  display: none;
+}
+
+.dark-theme .theme-toggle .sun-icon {
+  display: block;
 }
 
 /* Animations */

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaCircle, FaEquals } from 'react-icons/fa';
-import '../styles/index.css';
+import '../styles/index1.css';
 
 const GameInfo = ({ 
   currentPlayer, 
@@ -117,7 +117,7 @@ const GameInfo = ({
     className="rotate-hint"
     style={{
       fontSize: "1.3rem",
-      color: "rgba(255, 255, 255, 0.9)",
+      color: "#1E293B",
       textShadow: "0 0 8px rgba(165, 145, 255, 0.4)",
       marginTop: "1.5rem",
       fontWeight: 500,
