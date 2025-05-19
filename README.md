@@ -11,7 +11,7 @@ A retro Tic Tac Toe game built with **React** and enhanced with a fully interact
 - Animated effects and transitions
 - Responsive design for all devices
 - Score tracking with local storage
-- Dark and light modes
+- Toggle between dark and light modes
 
 ## Live Link
 [Tic Tac Tricked Retro Out](https://ornate-praline-606cfd.netlify.app/)

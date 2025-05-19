@@ -6,7 +6,7 @@ import ThreeDScene from './components/ThreeDScene';
 import ParticleBackground from './components/ParticleBackground';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
-import './styles/index1.css';
+import "./styles/index1.css";
 
 // Win/Draw Modal Component
 const WinModal = ({ winner, resetGame, isDarkTheme }) => {
